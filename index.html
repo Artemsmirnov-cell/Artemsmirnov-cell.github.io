@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EpicRoleplay | Ролевой сервер</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fa; 
+      --card: white;
+      --primary: #3498db;
+      --accent: #2ecc71;
+      --text: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: white;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .beta-date {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid var(--accent);
+      font-weight: bold;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .news-item {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+
+    .news-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .consent-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .consent-box h3 {
+      margin-top: 0;
+    }
+
+    .consent-box label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .consent-box input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .consent-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .consent-box button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .ip-info {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .donate-section {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .donate-section h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .donate-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      padding: 12px 25px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .donate-button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Проверка авторизации -->
+<script>
+  const currentUser = localStorage.getItem('er_current_user');
+  const allowedPages = ['login.html', 'register.html'];
+
+  if (!currentUser && !allowedPages.includes(window.location.pathname.split('/').pop())) {
+    window.location.href = 'login.html';
+  }
+</script>
+
+<header>
+  <h1>🌍 EpicRoleplay</h1>
+  <p>Ролевой сервер Minecraft 1.12.2 | В разработке</p>
+</header>
+
+<nav>
+  <a href="#about">О сервере</a>
+  <a href="#rules">Правила</a>
+  <a href="#laws">Законы</a>
+  <a href="#news">Новости</a>
+  <a href="#donate">Поддержать</a>
+</nav>
+
+<div class="container">
+
+  <!-- О сервере -->
+  <section id="about">
+    <h2>О сервере</h2>
+    <p><strong>EpicRoleplay</strong> — это ролевой сервер Minecraft версии 1.12.2, построенный с акцентом на реалистичность, взаимодействие между игроками и строгую систему законов.</p>
+    <p>Мы создаём уникальный мир, где каждый персонаж имеет своё прошлое, настоящее и будущее. Следите за новостями — запуск состоится совсем скоро!</p>
+    <div class="beta-date">📅 Бета-тест начнётся примерно <span class="highlight">10 июня 2025 года</span></div>
+  </section>
+
+  <!-- Правила -->
+  <section id="rules">
+    <h2>📜 Правила сервера</h2>
+    <ul>
+      <li>Не использовать читы, модификации или любые средства, дающие нечестное преимущество.</li>
+      <li>Уважать других игроков, администрацию и персонажей.</li>
+      <li>Не устраивать "мета-игру" (использовать информацию вне роли).</li>
+      <li>Игрок обязан следовать своей роли и избегать OOC (вне персонажа) действий в ролевых зонах.</li>
+      <li>Запрещено умышленно портить опыт другим игрокам (гриферство, флуд, оскорбления и т.д.).</li>
+    </ul>
+  </section>
+
+  <!-- Законы -->
+  <section id="laws">
+    <h2>⚖️ Законодательство сервера</h2>
+
+    <h3>🏛 Уголовное право</h3>
+    <ul>
+      <li>Убийство игрока без причины (в рамках ролевой системы) считается преступлением.</li>
+      <li>Кражи, грабежи и другие формы хищения имущества подлежат судебному рассмотрению.</li>
+      <li>Попытки уничтожения или повреждения чужой собственности рассматриваются как тяжкое преступление.</li>
+      <li>Подделка документов, фальшивомонетничество и мошенничество наказываются по всей строгости закона.</li>
+      <li>Создание или распространение наркотических веществ карается лишением свободы.</li>
+    </ul>
+
+    <h3>🚦 Административное право</h3>
+    <ul>
+      <li>Нарушение правил дорожного движения (в случае их наличия) карается штрафом или задержанием.</li>
+      <li>Шум после установленного времени, а также мешание общественному порядку могут привести к предупреждению или временному аресту.</li>
+      <li>Отказ от регистрации личности при запросе представителя власти может быть расценён как подозрительное поведение.</li>
+    </ul>
+  </section>
+
+  <!-- Новости -->
+  <section id="news">
+    <h2>📰 Новости</h2>
+
+    <div class="news-item">
+      <div class="news-title">Новость 1: Обновление мира</div>
+      <p>Мы завершили этап постройки основной столицы — город готов к жизни. В скором времени начнутся тестирования ролевой системы внутри города.</p>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">Новость 2: Подготовка к бета-тесту</div>
+      <p>Бета-тест намечен на 10 июня 2025 года. Подписывайтесь на наш Discord, чтобы получить ранний доступ!</p>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">Новость 3:Мы не успеваем сделать сервер</div>
+      <p>Бета-тест может быть перенесён</p>
+    </div>
+
+  </section>
+
+  <!-- Форма согласия -->
+  <section id="consent">
+    <div class="consent-box">
+      <h3>✅ Ознакомьтесь с правилами</h3>
+      <p>Прежде чем продолжить, пожалуйста, ознакомьтесь с правилами и подтвердите своё согласие:</p>
+
+      <label>
+        <input type="checkbox" id="agreeCheckbox" />
+        Я ознакомился с правилами и принимаю их
+      </label>
+
+      <button id="continueBtn" disabled onclick="saveConsent()">Продолжить</button>
+
+      <div class="ip-info" id="ipInfo">Ваш IP: загрузка...</div>
+    </div>
+  </section>
+
+  <!-- Кнопка пожертвования -->
+  <section id="donate">
+    <div class="donate-section">
+      <h2>💳 Поддержите развитие сервера</h2>
+      <p>Твоя помощь позволяет нам покупать мощные сервера, делать обновки и проводить ивенты для всех игроков.</p>
+      <a href="https://www.donationalerts.com/r/artemikprominecraft"  target="_blank" class="donate-button">💸 Поддержать на DonationAlerts</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 EpicRoleplay. Все права защищены.</p>
+</footer>
+
+<script>
+  // Получаем IP через API
+  async function getIP() {
+    try {
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json();
+      const ip = data.ip;
+
+      document.getElementById('ipInfo').innerText = 'Ваш IP: ' + ip;
+
+      // Сохраняем IP в localStorage
+      const user = localStorage.getItem('er_current_user');
+      if (user) {
+        let users = JSON.parse(localStorage.getItem('er_users') || '{}');
+        if (users[user]) {
+          users[user].ip = ip;
+          localStorage.setItem('er_users', JSON.stringify(users));
+        }
+      }
+
+    } catch (e) {
+      document.getElementById('ipInfo').innerText = 'Ваш IP: Не удалось определить';
+    }
+  }
+
+  // Пользователь принимает правила
+  function saveConsent() {
+    const user = localStorage.getItem('er_current_user');
+    if (!user) return;
+
+    let users = JSON.parse(localStorage.getItem('er_users') || '{}');
+
+    if (users[user]) {
+      users[user].acceptedRules = true;
+      localStorage.setItem('er_users', JSON.stringify(users));
+      alert("✅ Вы приняли правила!");
+      document.querySelector('.consent-box').style.display = 'none';
+    }
+  }
+
+  // Проверка: принял ли пользователь правила
+  function checkConsent() {
+    const user = localStorage.getItem('er_current_user');
+    if (!user) return;
+
+    const users = JSON.parse(localStorage.getItem('er_users') || '{}');
+    const hasAccepted = users[user]?.acceptedRules === true;
+
+    if (hasAccepted) {
+      document.querySelector('.consent-box').style.display = 'none';
+    } else {
+      document.querySelector('.consent-box').style.display = 'block';
+    }
+  }
+
+  // При загрузке страницы:
+  document.addEventListener('DOMContentLoaded', () => {
+    checkConsent();
+    getIP();
+
+    document.getElementById('agreeCheckbox').addEventListener('change', function () {
+      const btn = document.getElementById('continueBtn');
+      btn.disabled = !this.checked;
+    });
+  });
+</script>
+
+</body>
+</html>
