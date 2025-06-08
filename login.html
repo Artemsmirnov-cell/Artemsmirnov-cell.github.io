@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔐 Вход | EpicRoleplay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f7fa; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    p {
+      text-align: center;
+      margin-top: 15px;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .ban-message {
+      background-color: #ffeaea;
+      color: #e74c3c;
+      padding: 10px;
+      border-left: 4px solid #e74c3c;
+      margin-top: 15px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>🔐 Вход</h2>
+  <input type="text" id="username" placeholder="Никнейм" required />
+  <input type="password" id="password" placeholder="Пароль" required />
+  <button onclick="loginUser()">Войти</button>
+  <p>Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></p>
+  <div id="ban-info"></div>
+</div>
+
+<script>
+  function loginUser() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    const users = JSON.parse(localStorage.getItem('er_users') || '{}');
+
+    if (!users[username]) {
+      alert("❌ Неверный никнейм или пароль");
+      return;
+    }
+
+    if (users[username].blocked) {
+      const reason = users[username].banReason || "Не указана";
+      document.getElementById('ban-info').innerHTML = `
+        <div class="ban-message">
+          ❌ Ваш аккаунт заблокирован.<br/>
+          Причина: <strong>${reason}</strong>
+        </div>
+      `;
+      return;
+    }
+
+    if (users[username].password !== password) {
+      alert("❌ Неверный никнейм или пароль");
+      return;
+    }
+
+    localStorage.setItem('er_current_user', username);
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
